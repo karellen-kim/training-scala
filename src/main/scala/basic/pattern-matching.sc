@@ -30,3 +30,20 @@ def printOnlyBrand1Category(item: Option[Item]) = {
 printOnlyBrand1Category(item1)
 printOnlyBrand1Category(item2)
 printOnlyBrand1Category(None)
+
+
+trait Shape
+class Circle extends Shape
+class Rectangle extends Shape
+class Other extends Shape
+
+def call(shape: Shape) = shape match {
+  case sh : Shape if sh.isInstanceOf[Circle] || sh.isInstanceOf[Rectangle] =>
+    println(sh.getClass.getName)
+  case _ : Shape =>
+    println("other")
+}
+
+call(new Circle)
+call(new Rectangle)
+call(new Other)
