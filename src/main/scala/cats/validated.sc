@@ -46,6 +46,13 @@ object AdvancedValidator {
   def validateAll(email: String, age: Int): ValidatedNec[DomainValidation, (String, Int)] = {
     (validateEmail(email), validateAge(age)).mapN((e, a) => (e, a))
   }
+
+  def validateAll2(email: String, age: Int): Any = {
+    for {
+      e <- validateEmail(email)
+      a <- validateAge(age)
+    } yield (e, a)
+  }
 }
 
 AdvancedValidator.validateAll("abc@abc.com", 30)
