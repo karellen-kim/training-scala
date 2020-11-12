@@ -38,6 +38,9 @@ object ParseAny extends App {
       Decoder[ItemArray].widen,
     ).reduceLeft(_ or _)
 
-  val aa = decode[Item](typeInt)
-  println(aa)
+  val parseInt = decode[Item](typeInt)
+  println(parseInt)
+
+  val parseArray = decode[Item](typeArray)
+  println(parseArray)
 }
